@@ -1,0 +1,56 @@
+<html>
+<header>
+  <title>This is title</title>
+  <script src="plotly.js"></script>
+  <script src="functions.js"></script>
+  <link rel=¨stylesheet¨ type=¨text/css¨ href=¨stylesheet.css¨>
+</header>
+<body>
+  <div id="title">
+    <h1>Web Meter!</h1>
+  </div>
+  <div id="content">
+    <div id="liveValDiv">
+      <h3>Live Readings</h3>
+      <div id="val">
+        <h3></h3>
+      </div>
+    </div>
+    <div id="graphDiv">
+      <h3>Graph</h3>
+
+    </div>
+    <div id=controlsDiv>
+      <h3>Controls</h3>
+      <div id=setPollIP>
+        <h4>Set ESP8266 IP</h4>
+        <form>
+          IP: <input type="text" id="ipInput">
+          <input type="button" value="Update" onclick="setDevIP()">
+        </form>
+      </div>
+      <div id=setUpdateRate>
+        <h4>Set Update Period</h4>
+        Update Rate (ms): <input type="text" id="rateInput">
+        <input type="button" value="Update" onclick="setUpdateRate()">
+      </div>
+      <div id=setUnitsDiv>
+        <h4>Set Units</h4>
+        Units: <input type="text" id="unitInput">
+        <input type="button" value="Update" onclick="setUnits()">
+      </div>
+      <div id=setScalingDiv>
+        <h4>Set Scaling</h4>
+        Units: <input type="text" id="scaleInput">
+        <input type="button" value="Update" onclick="setScaling()">
+      </div>
+
+      <br><br><br><br><br><br>
+      <div>
+        Project Info Page:<br>
+        https://github.com/jamieapps101/webapp
+      </div>
+    </div>
+  </div>
+</body>
+</html>
