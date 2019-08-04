@@ -15,28 +15,44 @@ class websocketControl {
     // var IPre = new RegExp('[\d\d]');
     // var portre = new RegExp('(:(\d){0,})(?!:)');
     //var ipComp = /\d\d/g.match(self.ip);
-    var ipComp = self.ip.match(/\d{2}/g);
 
-    console.log(ipComp);
+    var sanityCheck = false
 
-    if(ipComp.length == 4 && portComp.length == 1)
+    if(sanityCheck == true)
     {
-      self.socket = new webSocket(self.ip);
-      self.socket.addEventListener('open', self.onConnect(event));
-      self.socket.addEventListener('close', self.onDisconnect(event));
-      self.socket.addEventListener('message', self.onMessage(event));
-      self.socket.addEventListener('error', self.onError(event));
+      var ipComp = self.ip.match(/\d{2}/g);
+
+      console.log(ipComp);
+      if(ipComp.length == 4 && portComp.length == 1)
+      {
+        self.socket = new webSocket(self.ip);
+        self.socket.addEventListener('open', self.onConnect(event));
+        self.socket.addEventListener('close', self.onDisconnect(event));
+        self.socket.addEventListener('message', self.onMessage(event));
+        self.socket.addEventListener('error', self.onError(event));
+      }
+      else
+      {
+        console.log("Error in ip: " + self.ip);
+      }
     }
     else
     {
-      console.log("Error in ip: " + self.ip);
+      console.log("connecting to: " + self.ip);
+      self.socket = new WebSocket("ws://" + self.ip);
+      self.socket.addEventListener('open',    this.onConnect    );
+      self.socket.addEventListener('message', this.onMessage    );
+      self.socket.addEventListener('error',   this.onError      );
+      self.socket.addEventListener('close',   this.onDisconnect );
     }
+
   }
 
   onConnect(event)
   {
     console.log("Websocket Connected");
     self.connected = 1;
+    self.socket.send("Jamie");
   }
 
   onDisconnect(event)

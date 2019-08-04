@@ -61,14 +61,3 @@ function setScaling()
   scaleUnits = parseFloat(document.getElementById('scaleInput').value);
   console.log("setting scale: " + scaleUnits);
 }
-
-function webSocketOpened(event)
-{
-  socketConnected = 1;
-  console.log("Websocket connected");
-}
-function webSocketClosed(event)
-{
-  socketConnected = 0;
-  console.log("websocket disconnected");
-}
