@@ -7,7 +7,9 @@ var intervalID = setInterval(pollDevice, updateRate);
 
 var socketConnected = 0; // used to show not connected on live val but zeros on graph
 
-var websocket = null;
+var websocketController = new websocketControl();
+
+
 // put a check for a cookie here, and if present attempt to connect to the
 // device
 
@@ -27,11 +29,15 @@ function pollDevice()
 function setDevIP()
 {
   devIP = document.getElementById('ipInput').value;
-  console.log("setting dev IP: " + devIP);
-
-  if(false) // check to see if a valid ip was entered
+  if(devIP.length > 0)
   {
-
+    console.log("setting dev IP: " + devIP);
+    websocketController.setIP(devIP);
+    websocketController.connect();
+  }
+  else
+  {
+    console.log("Please actually enter an ip....")
   }
 }
 

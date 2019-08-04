@@ -7,6 +7,7 @@ as a detached meter for physical readings. Using a web interface, a live readout
 
 To Do Soon:
 * Create JS to attach to controls section
+* add websocket object
 * Add sanity checks/validation to that
 * Add some CSS to actually make the thing look useable
 * Rearrange bottom inputs into a grid
