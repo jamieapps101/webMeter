@@ -6,20 +6,19 @@ as a detached meter for physical readings. Using a web interface, a live readout
 
 
 To Do Soon:
-* Create JS to attach to controls section
-* add websocket object
-* Add sanity checks/validation to that
-* Add some CSS to actually make the thing look useable
-* Rearrange bottom inputs into a grid
-* Add the graphing functionality using plotly.js
-* create a repeat polling function/look into sockets with an interrupting function to allow refresh on update
-* Build hardware
-* write firmware
-* test
+* Create JS to attach to controls section &#x2611;
+* add websocket object &#x2611;
+* Add sanity checks/validation to that &#x2612;
+* Add some CSS to actually make the thing look useable &#x2612
+* Rearrange bottom inputs into a grid &#x2612;
+* Add the graphing functionality using plotly.js &#x2612;
+* Build hardware &#x2612;
+* write firmware &#x2612;
+* test &#x2612;
 
 To Do At Some Point:
-* make it mobile friendly
-* export graph
-* add server style script for longer data logging
-* add battery measurements/estimates to monitor hardware health
-* add cookies to remember previous device IP, update rate and unit settings
+* make it mobile friendly &#x2612
+* export graph &#x2612
+* add server style script for longer data logging &#x2612
+* add battery measurements/estimates to monitor hardware health &#x2612
+* add cookies to remember previous device IP, update rate and unit settings &#x2612

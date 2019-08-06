@@ -1,6 +1,6 @@
 <html>
 <header>
-  <title>This is title</title>
+  <title>webMeter</title>
   <script src="plotly.js"></script>
   <script src="websocketControl.js"></script>
   <script src="functions.js"></script>
@@ -26,7 +26,7 @@
       <div id=setPollIP>
         <h4>Set ESP8266 IP</h4>
         <form>
-          IP: <input type="text" id="ipInput">
+          IP: <input type="text" id="ipInput" value="localhost:5001">
           <input type="button" value="Update" onclick="setDevIP()">
         </form>
       </div>
@@ -48,8 +48,7 @@
 
       <br><br><br><br><br><br>
       <div>
-        Project Info Page:<br>
-        https://github.com/jamieapps101/webapp
+        <a href="https://github.com/jamieapps101/webMeter" target="_blank"> Project Info Page </a>
       </div>
     </div>
   </div>
