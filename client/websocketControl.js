@@ -52,7 +52,6 @@ class websocketControl {
   {
     console.log("Websocket Connected");
     self.connected = 1;
-    self.socket.send("Jamie");
   }
 
   onDisconnect(event)

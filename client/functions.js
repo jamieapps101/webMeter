@@ -34,6 +34,7 @@ function setDevIP()
     console.log("setting dev IP: " + devIP);
     websocketController.setIP(devIP);
     websocketController.connect();
+    websocketController.socket.addEventListener('message', this.onMessageEvent);
   }
   else
   {
@@ -41,19 +42,30 @@ function setDevIP()
   }
 }
 
+function onMessageEvent()
+{
+  console.log("party time!");
+}
+
 function setUpdateRate()
 {
+  /*
   updateRate = parseInt(document.getElementById('rateInput').value);
   console.log("setting update rate: " +
   updateRate.toString() + "ms");
   clearInterval(intervalID);
   intervalID = setInterval(pollDevice, updateRate);
+  */
+  websocketController.sendData("on");
 }
 
 function setUnits()
 {
+  /*
   unitsString = document.getElementById('unitInput').value;
   console.log("setting units: " + unitsString);
+  */
+  websocketController.sendData("off");
 }
 
 function setScaling()
