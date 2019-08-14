@@ -11,6 +11,11 @@
 #include <ESP8266WiFiMulti.h>
 #include <WebSocketsServer.h>
 #include <Hash.h>
+#include <Ticker.h
+#include <Wire.h>
+
+
+#define testMode
 
 #ifdef U8X8_HAVE_HW_SPI
 #include <SPI.h>
@@ -18,10 +23,14 @@
 #ifdef U8X8_HAVE_HW_I2C
 #include <Wire.h>
 #endif
+#define SDA_PIN 4
+#define SCL_PIN 5
+#define ADC_ADDRESS
 
 ESP8266WiFiMulti WiFiMulti;
 WebSocketsServer webSocket = WebSocketsServer(81);
-U8G2_SSD1306_128X32_UNIVISION_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ 16, /* clock=*/ 5, /* data=*/ 4); // for the oled screen
+U8G2_SSD1306_128X32_UNIVISION_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ 16, /* clock=*/ SCL_PIN, /* data=*/ SDA_PIN); // for the oled screen
+Ticker ISRTicker;
 
 #define USE_SERIAL Serial
 
@@ -81,6 +90,22 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
     }
 }
 
+int sensorVal = 0;
+
+void sampleSensor()
+{
+ Serial.println("sampling"); 
+ #ifndef testMode
+   Wire.requestFrom(ADC_ADDRESS, 6);    // request 6 bytes from slave device
+  
+   while (Wire.available()) 
+   { // slave may send less than requested
+        char c = Wire.read(); // receive a byte as character
+        Serial.print(c);         // print the character
+   }
+ #endif
+}
+
 void setup() 
 {
     USE_SERIAL.begin(115200);
@@ -116,6 +141,7 @@ void setup()
     USE_SERIAL.printf("Completed");
     pinMode(5, OUTPUT); 
     USE_SERIAL.printf("Initialisation Complete");
+    ISRTicker.attach(0.1,sampleSensor);
 }
 
 void loop() 
